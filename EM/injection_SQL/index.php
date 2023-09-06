@@ -14,6 +14,8 @@ try {
 
 } catch (PDOException $e) {
     echo "error MySQL connect";
+
+    exit;
 }
 
 $username = "alan";
@@ -21,6 +23,7 @@ $password = "' or 1 -- ";
 
 $sql = "SELECT * FROM `users` WHERE `username`='$username' AND `password`='$password'" ;
 echo $sql ;
+// SELECT * FROM `users` WHERE `username`='alan' AND `password`='' or 1 -- '
 $sth = $dbh->query($sql);
 
 var_dump($sth->fetch() );
@@ -30,6 +33,6 @@ var_dump($sth->fetch() );
 
 /**
  * Exercice
- * Créez un formulaire pour faire cette injection en PHP et protégé l'attaque
+ * Trouver/rechercher une solution pour vous protégez de ce type d'attaque 
  * 
  */
