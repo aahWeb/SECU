@@ -62,6 +62,8 @@ if (sizeof($_POST) > 0) {
             <label for="password">Password</label>
             <input type="password" name="password" />
         </p>
+        <!-- todo csrf -->
+        <input type="hidden" name="csrf" />
         <p>
             <button type="submit">Ok</button>
         </p>
