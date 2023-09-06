@@ -1,6 +1,7 @@
 <?php
 if (sizeof($_POST) > 0) {
     $comment = $_POST['comment'];
+    $comment = htmlspecialchars($comment, ENT_QUOTES, 'UTF-8');
     echo "Commentaire : " . $comment;
 }
 ?>
@@ -14,6 +15,7 @@ if (sizeof($_POST) > 0) {
 </head>
 
 <body>
+    <!--
     <div
         style="color: #6b6b6b;background-color:#fefffe;position:absolute;top:0;left:0;z-index:1000;width:100%;height:100%;">
         <div style="margin:auto;width:350px;">
@@ -29,6 +31,7 @@ if (sizeof($_POST) > 0) {
             </form>
         </div>
     </div>
+            -->
     <form method="post" action="http://localhost:8000">
         <p>
             <input type="text" name="username" />
