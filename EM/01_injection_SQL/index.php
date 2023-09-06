@@ -19,11 +19,11 @@ try {
 }
 
 $username = "alan";
-$password = "' or 1 -- ";
+$password = "' or 1 ; -- ";
 
 $sql = "SELECT * FROM `users` WHERE `username`='$username' AND `password`='$password'" ;
 echo $sql ;
-// SELECT * FROM `users` WHERE `username`='alan' AND `password`='' or 1 -- '
+// SELECT * FROM `users` WHERE `username`='alan' AND `password`='' or 1 ; -- '
 $sth = $dbh->query($sql);
 
 var_dump($sth->fetch() );
@@ -36,3 +36,20 @@ var_dump($sth->fetch() );
  * Trouver/rechercher une solution pour vous protégez de ce type d'attaque 
  * 
  */
+
+$username = "alan";
+$password = "' or 1 ; -- ";
+// $password = "12345";
+
+
+// On utilise les requêtes prepare pour se prémunir des injections, on bloque la possibilité de modifier le code source de la requete
+
+// le moule de la requête qui est compilée => non modifiable après une fois compilé
+// l'utilisateur ne peut plus modifier la requête à partir d'un formulaire par exemple
+$sth = $dbh->prepare('SELECT * FROM users WHERE username = ? AND password = ? ');
+
+var_dump($sth);
+
+$sth->execute([ $username, $password ]);
+
+var_dump( $sth->fetch() );

@@ -1,7 +1,9 @@
 
+
+DROP DATABASE IF EXISTS `db_blog` ;
+
 CREATE DATABASE IF NOT EXISTS `db_blog`
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 
 use `db_blog` 
 
